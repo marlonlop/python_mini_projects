@@ -1,6 +1,10 @@
 from art import logo, vs
 from data import data
 import random
+import os
+
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def format_data(account):
     """takes the acct data and returns the printable format"""
@@ -27,16 +31,17 @@ def check_answer(guess, a_followers, b_followers):
         return guess == "b"
 
 score = 0
+print(logo)
+account_b = random.choice(data)
+
 while(True):
-    print(logo)
-    print(f"current score: {score}")
 
     # picking both accounts
-    account_a = random.choice(data)
+    account_a = account_b
     account_b = random.choice(data)
-    if account_a == account_b:
-        while account_a == account_b:
-            account_b = random.choice(data)
+
+    while account_a == account_b:
+        account_b = random.choice(data)
 
     print(f"Compare A: {format_data(account_a)}")
     print(vs)
@@ -55,11 +60,15 @@ while(True):
 
     a_follower_count = account_a["follower_count"]
     b_follower_count = account_b["follower_count"]
-
     is_correct = check_answer(guess, a_follower_count, b_follower_count)
+
+    cls()
+    print(logo)
 
     if is_correct:
         score += 1
         print(f"Right, current score: {score}")
     else:
         print(f"Wrong, final score: {score}")
+        print("exiting") 
+        exit(0)
