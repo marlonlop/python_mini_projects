@@ -1,9 +1,10 @@
-from art import logo, vs
-from data import data
 import random
 import os
+from art import logo, vs
+from data import data
 
 def cls():
+    """clear console"""
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def format_data(account):
@@ -13,7 +14,7 @@ def format_data(account):
     acct_country = account['country']
     return f"{acct_name}, a {acct_descr}, from {acct_country}"
 
-def check_answer(guess, a_followers, b_followers):
+def check_answer(g, a_followers, b_followers):
     """Check if answer is correct"""
     '''
     if guess == "a":
@@ -26,15 +27,16 @@ def check_answer(guess, a_followers, b_followers):
         else: return False
     '''
     if a_followers > b_followers:
-        return guess == "a"
+        return g == "a"
     else:
-        return guess == "b"
+        return g == "b"
+
 
 score = 0
 print(logo)
 account_b = random.choice(data)
 
-while(True):
+while True:
 
     # picking both accounts
     account_a = account_b
