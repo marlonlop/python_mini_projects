@@ -15,8 +15,8 @@ def format_data(account):
     return f"{acct_name}, a {acct_descr}, from {acct_country}"
 
 def check_answer(g, a_followers, b_followers):
-    """Check if answer is correct"""
-    '''
+    """Check if answer is correct
+    
     if guess == "a":
         if a_followers > b_followers:
             return True
@@ -25,7 +25,7 @@ def check_answer(g, a_followers, b_followers):
         if a_followers < b_followers:
             return True
         else: return False
-    '''
+    """
     if a_followers > b_followers:
         return g == "a"
     else:
